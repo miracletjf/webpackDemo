@@ -16,6 +16,7 @@ module.exports = {
       title: "Output Management"
     }),
   ],
+  devtool: 'inline-source-map',
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist')
