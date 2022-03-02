@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 
 module.exports = {
@@ -25,6 +26,7 @@ module.exports = {
     publicPath: '/'
   },
   plugins: [
+    new BundleAnalyzerPlugin(),
     new WebpackManifestPlugin({}),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
