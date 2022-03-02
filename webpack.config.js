@@ -6,16 +6,19 @@ const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 
 module.exports = {
   entry: {
-    app: './src/index.js',
-    another: './src/another-module.js',
+    index: {
+      import: './src/index.js',
+      dependOn: 'shared'
+    },
+    another: {
+      import: './src/another-module.js',
+      dependOn: 'shared'
+    },
+    shared: 'lodash'
   },
-  plugins: [
-    new WebpackManifestPlugin({}),
-    new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({
-      title: "Output Management"
-    }),
-  ],
+  optimization: {
+    runtimeChunk: 'single'
+  },
   mode: 'development',
   devServer: {
     static: './dist'
@@ -26,6 +29,13 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/'
   },
+  plugins: [
+    new WebpackManifestPlugin({}),
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: "Output Management"
+    }),
+  ],
   module: {
     rules: [{
       test: /\.css$/,
