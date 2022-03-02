@@ -6,8 +6,8 @@ const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 
 module.exports = {
   entry: {
-    print: './src/print.js',
     app: './src/index.js',
+    another: './src/another-module.js',
   },
   plugins: [
     new WebpackManifestPlugin({}),
